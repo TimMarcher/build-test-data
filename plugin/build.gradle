@@ -4,7 +4,7 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
     }
 }
 
@@ -18,10 +18,10 @@ apply plugin: "org.grails.grails-plugin"
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
-    compile "dk.brics.automaton:automaton:1.11-8"
+    compile "dk.brics:automaton:1.12-3"
 
     compile "org.grails:grails-core"
-    compile "org.grails:grails-gorm-testing-support:2.0.0"
+    compile "org.grails:grails-gorm-testing-support:$gormTestingSupportVersion"
     compile "org.grails:grails-databinding"
     compile "org.grails:grails-datastore-gorm"
     console "org.grails:grails-console"

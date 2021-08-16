@@ -5,7 +5,7 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
         classpath "org.grails:grails-docs:${project.ext.properties.grailsDocsVersion ?: grailsVersion}"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
@@ -19,6 +19,7 @@ repositories {
 }
 
 version project.projectVersion
+group 'org.grails.plugins'
 
 ext {
     commonBuild = new File(project.rootDir, "gradle").absolutePath
@@ -48,6 +49,7 @@ subprojects {
     }
 
     tasks.withType(Test) {
+        useJUnitPlatform()
         testLogging {
             events "failed"
             exceptionFormat "full"
