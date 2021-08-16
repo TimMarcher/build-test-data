@@ -1,6 +1,55 @@
-apply plugin: "org.grails.grails-plugin-publish"
+apply plugin: 'maven-publish'
+
+// Maven Central publishing
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = 'build-test-data'
+            version = project.version
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Build Test Data Plugin'
+                description = 'Enables the easy creation of test data by automatically satisfying common constraints'
+                url = "https://github.com/longwa/$project.name"
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'longwa'
+                        name = 'Aaron Long'
+                        email = 'longwa@gmail.com'
+                    }
+                    developer {
+                        id = 'tednaleid'
+                        name = 'Ted Naleid'
+                    }
+                    developer {
+                        id = 'basejump'
+                        name = 'Joshua Burnett'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com:longwa/build-test-data.git'
+                    developerConnection = 'scm:git:ssh://github.com:longwa/build-test-data.git'
+                    url = 'https://github.com/longwa/build-test-data.git'
+                }
+            }
+        }
+    }
+}
 
 // Normal Grails bintray publishing
+/* BINTRAY closed
+
 grailsPublish {
     githubSlug = 'longwa/build-test-data'
     license {
@@ -38,3 +87,4 @@ publishing {
     }
 }
 
+ */
